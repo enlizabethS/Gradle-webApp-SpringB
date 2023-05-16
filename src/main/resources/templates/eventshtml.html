@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+<body>
+
+<h1>Events in <span th:text="${city}">City</span></h1>
+
+<table>
+<tbody th:each="event: ${events}">
+<tr>
+    <td th:text="${event.name}" />
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
