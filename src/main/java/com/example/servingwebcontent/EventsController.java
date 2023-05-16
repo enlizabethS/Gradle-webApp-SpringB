@@ -1,6 +1,9 @@
 package com.example.servingwebcontent;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,18 +20,24 @@ class Event
         this.name = name;
         this.city = city;
     }
+    @Schema(description = "Name of the event")
+    @Getter
+    @Setter
     private String name;
+    @Schema(description = "Location of the event")
+    @Getter
+    @Setter
     private String city;
 
-    public String getName()
-    {
-        return name;
-    }
-
-    public String getCity()
-    {
-        return city;
-    }
+//    public String getName()
+//    {
+//        return name;
+//    }
+//
+//    public String getCity()
+//    {
+//        return city;
+//    }
 }
 
 @Controller
