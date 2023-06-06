@@ -1,5 +1,6 @@
-package com.example.servingwebcontent;
+package com.example.ticketShop.event;
 
+import com.example.ticketShop.place.PlaceDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -18,13 +19,8 @@ public class EventDTO {
             required = true)
     @NotBlank
     @Size(max = 50)
-    private String name;
+    private String title;
 
-    @Schema(description = "Location of the event",
-            example = "Berlin",
-            required = true)
-    @NotBlank
-    @Size(max = 30)
-    private String city;
+    private PlaceDTO place;
 
 }

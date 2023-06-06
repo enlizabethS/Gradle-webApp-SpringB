@@ -1,4 +1,4 @@
-package com.example.servingwebcontent;
+package com.example.ticketShop.event;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -10,9 +10,9 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("rest-api-events")   // @RestController = @Controller + @ResponseBody for each methode
+@RequestMapping("events")   // @RestController = @Controller + @ResponseBody for each methode
 @Tag(name = "Events", description = "Working with events")
-public class EventRestApiController {
+public class EventController {
 
     private EventService eventService;
 
@@ -27,7 +27,7 @@ public class EventRestApiController {
     public List<EventDTO> listEvents(@RequestParam(
             value = "city", required = false, defaultValue = "all") String city, Model model) {
         
-        return eventService.getAllEvents(city);
+        return eventService.getEvents(city);
     }
     
     @Operation(summary = "Get event by ID.", description = "Get specific event by entering event ID.")
@@ -47,16 +47,16 @@ public class EventRestApiController {
 
     @Operation(summary = "Update event fields.", description = "Update event fields by entering new values.")
     @PutMapping(value = "/{eventId}")
-    public EventDTO updateEvent(@PathVariable int eventId, @RequestBody EventDTO newEventDTO) {
+    public void updateEvent(@PathVariable int eventId, @RequestBody NewEventDTO newEventDTO) {
 
-        return eventService.updateEventById(eventId, newEventDTO);
+        eventService.updateEventById(eventId, newEventDTO);
     }
 
     @Operation(summary = "Add new event.", description = "Add new event by entering object fields.")
     @PostMapping
-    public EventDTO createEvent(@RequestBody EventDTO eventDTO) {
+    public int createEvent(@RequestBody NewEventDTO newEventDTO) {
 
-        return eventService.createNewEvent(eventDTO);
+        return eventService.createNewEvent(newEventDTO);
     }
 
 }
